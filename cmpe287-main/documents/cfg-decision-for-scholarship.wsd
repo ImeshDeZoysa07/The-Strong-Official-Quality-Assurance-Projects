@@ -1,0 +1,56 @@
+@startuml Control Flow Diagram for Decision For Scholarship
+
+start
+
+:(1) Initialize;
+(a)
+:(2) ELIGIBLE_FOR_SCHOLARSHIP=1
+NOT_ELIGIBLE_FOR_SCHOLARSHIP=0
+DEAN_FOR_CONSIDERATION='Dean for consideration';
+(b)
+if ((3) age < 18 or age > 24) then (T)
+    (c)
+    if ((4) !hasLivedInCaliforniaAtLeastTwoYears && !haveParentsPaidCaliforniaTaxAtLeastOneYear) then (T)
+        (e)
+        :(5) Return NOT_ELIGIBLE_FOR_SCHOLARSHIP;
+        stop
+    else (F)
+        (f)
+        if ((6) !haveParentsPaidCaliforniaTaxAtLeastOneYear) then (T)
+            (g)
+            :(7) Return NOT_ELIGIBLE_FOR_SCHOLARSHIP;
+            stop
+        else (F)
+            (h)
+            if (!(8) hasWorkedPartTimeAtLeastSixMonthsInRelevantField && !hasVolunteered) then (T)
+                (i)
+                :(9) Return NOT_ELIGIBLE_FOR_SCHOLARSHIP;
+                stop
+            else (F)
+                (j)
+                if ((10) !hasVolunteered) then (T)
+                    (k)
+                    :(11) Return NOT_ELIGIBLE_FOR_SCHOLARSHIP;
+                    stop
+                else (F)
+                    (l)
+                    if ((12) !hasWorkedPartTimeAtLeastSixMonthsInRelevantField && isHouseHoldIncomeLessThanFiveThousand) then (T)
+                        (m)
+                        :(13) Return DEAN_FOR_CONSIDERATION;
+                        stop
+                    else (F)
+                        (n)
+                        :(14) Return ELIGIBLE_FOR_SCHOLARSHIP;
+                        stop
+                    endif
+                endif
+            endif
+        endif
+    endif
+else (F)
+(d)
+:(15) Return NOT_ELIGIBLE_FOR_SCHOLARSHIP;
+
+stop
+
+@enduml
